@@ -109,6 +109,10 @@ const app = Vue.createApp({
 
         closePhoto(){
             this.select_image = false
+        },
+
+        inputdata(p){
+            this.input = p;
         }
 
     },

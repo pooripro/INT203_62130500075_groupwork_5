@@ -26,26 +26,15 @@
 
       <!-- navbar -->
       <div class="flex items-center justify-between bg-black text-white h-10">
-        <photo-search :selecticon="show.icon" :selectbar="show.searchbar" @toggle="toggle"></photo-search>
-        <!-- <span v-if="show.icon" @click="toggle" class="material-icons">
-          search
-        </span>
-
-        <div v-if="show.searchbar">
-          <input v-model="input"
-            class="ml-2 p-1 w-80 placeholder-gray-500 placeholder-opacity-50 focus:outline-none text-black rounded-sm"
-            type="text" placeholder="Please enter text for searching photos">
-          <button class="ml-2 p-1 rounded-sm focus:outline-none bg-blue-500" @click="toggle">Cancel</button>
-        </div> -->
-
+        <photo-search :selecticon="show.icon" :selectbar="show.searchbar" :inputphoto="input" @toggle="toggle" @input-data="inputdata">
+        </photo-search>
         <count-photo :count="countPhoto"></count-photo>
       </div>
-
       <select-photo :selectstatus="select_image" :select="searchSelectPhoto" @closephoto="closePhoto"></select-photo>
     </div>
 
     <div class="m-5">
-      <photo-set :photoset="photos" @searchphotos="searchphotos" @zoomphoto="zoomPhoto" @fav="favorite"></photo-set>
+      <photo-set :photoset="searchphotos" @zoomphoto="zoomPhoto" @fav="favorite"></photo-set>
     </div>
   </div>
 

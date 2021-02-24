@@ -13,13 +13,12 @@ app.component('count-photo', {
 app.component('photo-set', {
   props: {
       photoset: Object,
-      searchphotos: Boolean
 
   },
 
   template:
     /*html*/`
-    <ul v-if="this.$emit('searchphotos') !== 0" class="grid grid-cols-2 gap-y-10 ml-10 lg:grid-cols-5">
+    <ul v-if="this.$emit('photoset') !== 0" class="grid grid-cols-2 gap-y-10 ml-10 lg:grid-cols-5">
         <li v-for="(photo, index) in photoset">
           <p class="text-lg font-semibold">{{ photo.title }}</p>
           <button @click="this.$emit('zoomphoto', index)"><img :src="photo.src" class="h-48 w-32"

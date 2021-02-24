@@ -2,7 +2,8 @@ app.component('photo-search',{
     props: {
         search: Object,
         selecticon: Boolean,
-        selectbar: Boolean
+        selectbar: Boolean,
+        input: String
     },
 
     template:
@@ -19,7 +20,4 @@ app.component('photo-search',{
         </div>
     `
     
-    
-
-
 })

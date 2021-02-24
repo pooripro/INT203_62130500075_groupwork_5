@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Basic Vue Js - HelloWorld App</title>
+
+  <!-- https://google.github.io/material-design-icons/#icon-font-for-the-web -->
+  <!-- Using via Google Web Fonts -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+  <!-- https://tailwindcss.com/docs/installation -->
+  <!-- Using Tailwind via CDN -->
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+
+  <!-- https://v3.vuejs.org/guide/installation.html#release-notes -->
+  <!-- Vue CDN -->
+  <script src="https://unpkg.com/vue@next"></script>
+  <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+  <div id="app" class="">
+    <div class="mx-auto container">
+
+      <!-- navbar -->
+      <div class="flex items-center justify-between bg-black text-white h-10">
+        <photo-search :selecticon="show.icon" :selectbar="show.searchbar" @toggle="toggle"></photo-search>
+        <!-- <span v-if="show.icon" @click="toggle" class="material-icons">
+          search
+        </span>
+
+        <div v-if="show.searchbar">
+          <input v-model="input"
+            class="ml-2 p-1 w-80 placeholder-gray-500 placeholder-opacity-50 focus:outline-none text-black rounded-sm"
+            type="text" placeholder="Please enter text for searching photos">
+          <button class="ml-2 p-1 rounded-sm focus:outline-none bg-blue-500" @click="toggle">Cancel</button>
+        </div> -->
+
+        <!-- count-photo -->
+        <count-photo :count="countPhoto"></count-photo>
+      </div>
+
+      <!-- select-image-->
+      <select-photo :selectstatus="select_image" :select="searchSelectPhoto" @closephoto="closePhoto"></select-photo>
+      <!-- <div v-if="select_image" class="w-full h-full bg-black">
+        <div v-for="(photo, index) in searchSelectPhoto" class="ml-96 flex flex-row">
+          <img :src="photo.src" class="w-1/5 h-4/5 ml-52">
+          <button><span @click="closePhoto" v-if="select_image == true" class="material-icons bg-white ml-2 mb-96">
+            close
+          </span></button>
+        </div> -->
+    </div>
+
+    <div class="m-5">
+      <ul v-if="searchphotos.length !== 0" class="grid grid-cols-2 gap-y-10 ml-10 lg:grid-cols-5">
+        <!-- photo-set -->
+        <photo-set :photoset="photos" @zoomphoto="zoomPhoto" @fav="favorite"></photo-set>
+      </ul>
+      <ul v-else>
+        <li>Not have any Photo</li>
+      </ul>
+    </div>
+  </div>
+
+
+  <script src="./main.js"></script>
+  <script src="components/PhotoItem.js"></script>
+  <script src="components/PhotoSearch.js"></script>
+  <script src="components/PhotoView.js"></script>
+
+  <script>
+    const mountedApp = app.mount('#app')
+  </script>
+</body>
+
+</html>
